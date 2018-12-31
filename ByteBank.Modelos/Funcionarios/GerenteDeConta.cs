@@ -1,11 +1,10 @@
-﻿using Bytebank.Sistemas;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Bytebank.Funcionarios
+namespace ByteBank.Modelos.Funcionarios
 {
     public class GerenteDeConta : FuncionarioAutenticavel
     {

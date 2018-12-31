@@ -6,13 +6,11 @@ using System.Threading.Tasks;
 
 namespace ByteBank.Modelos
 {
-    public class ParceiroComercial : IAutenticavel
+    public class Format
     {
-        public string Senha { get; set; }
-
-        public bool Autenticar(string senha)
+        public static string FormatDouble(double valor)
         {
-            return Senha == senha;
+            return "R$ " + String.Format("{0:N}", valor);
         }
     }
 }

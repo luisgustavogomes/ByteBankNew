@@ -1,4 +1,6 @@
-﻿using System;
+﻿
+using ByteBank.Modelos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,10 +8,14 @@ using System.Threading.Tasks;
 
 namespace ByteBank.SistemaAgencia
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
+            ContaCorrente conta = new ContaCorrente(847, 847);
+            Console.WriteLine("Número: " + conta.Numero + "\nAgencia: " + conta.Agencia);
+
+            Console.ReadLine();
         }
     }
 }

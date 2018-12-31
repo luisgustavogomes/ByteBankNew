@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace BytebankEx
+namespace ByteBank.Modelos
 {
     public class ContaCorrente
     {
@@ -57,7 +57,7 @@ namespace BytebankEx
         {
             if (valor <= 0)
             {
-                throw new ArgumentException("Valor " + Program.FormatDouble(valor) + " inválido para o saque.", nameof(valor));
+                throw new ArgumentException("Valor " + Format.FormatDouble(valor) + " inválido para o saque.", nameof(valor));
             }
             if (_saldo < valor)
             {
@@ -86,7 +86,7 @@ namespace BytebankEx
         {
             if (valor <= 0)
             {
-                throw new ArgumentException("Valor " + Program.FormatDouble(valor) + " inválido para transferência.", nameof(valor));
+                throw new ArgumentException("Valor " + Format.FormatDouble(valor) + " inválido para transferência.", nameof(valor));
             }
 
             try

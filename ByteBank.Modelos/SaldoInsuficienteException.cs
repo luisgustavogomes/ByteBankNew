@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BytebankEx
+namespace ByteBank.Modelos
 {
     class SaldoInsuficienteException : OperacaoFinanceiraException
     {
@@ -13,8 +13,8 @@ namespace BytebankEx
         public double ValorSaque { get;}
 
         public SaldoInsuficienteException(double saldo, double valorSaque) 
-            : this ("Tentativa de saque do valor de " + Program.FormatDouble(valorSaque) + 
-                    " em uma conta com saldo de " + Program.FormatDouble(saldo))
+            : this ("Tentativa de saque do valor de " + Format.FormatDouble(valorSaque) + 
+                    " em uma conta com saldo de " + Format.FormatDouble(saldo))
         {
             Saldo = saldo;
             ValorSaque = valorSaque;
