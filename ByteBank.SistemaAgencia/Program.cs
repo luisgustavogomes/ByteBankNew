@@ -13,6 +13,7 @@ namespace ByteBank.SistemaAgencia
         public static void Main(string[] args)
         {
             ContaCorrente conta = new ContaCorrente(847, 847);
+            new ContaCorrente(874, 876);
             Console.WriteLine("Número: " + conta.Numero + "\nAgencia: " + conta.Agencia);
 
             Console.ReadLine();
