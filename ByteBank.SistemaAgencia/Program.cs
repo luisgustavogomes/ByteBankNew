@@ -22,9 +22,8 @@ namespace ByteBank.SistemaAgencia
             Console.WriteLine("Data atual: " + dataAtual);
             Console.WriteLine("Diferença de datas: " + TimeSpanHumanizeExtensions.Humanize(diff) );
 
-
             Console.ReadLine();
-        }
+        }   
 
         //public static string GetIntervaloDeTempoLegivel(TimeSpan timeSpan)
         //{
