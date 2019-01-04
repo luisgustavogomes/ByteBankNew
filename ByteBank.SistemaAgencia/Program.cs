@@ -14,10 +14,10 @@ namespace ByteBank.SistemaAgencia
     {
         public static void Main(string[] args)
         {
+            
+           
 
-            ContaCorrente conta = new ContaCorrente(123,123456);
 
-            Console.WriteLine(conta);
             Console.ReadLine();
         }
 
