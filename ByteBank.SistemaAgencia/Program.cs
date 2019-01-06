@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Humanizer;
 using System.Text.RegularExpressions;
 
 namespace ByteBank.SistemaAgencia
@@ -14,11 +13,73 @@ namespace ByteBank.SistemaAgencia
     {
         public static void Main(string[] args)
         {
-            
-           
+            List<ContaCorrente> contas = new List<ContaCorrente>();
+
+
 
 
             Console.ReadLine();
+        }
+
+        private static void TrabalhandoComNullEmValores()
+        {
+            int? numero = null;
+            Console.WriteLine(numero);
+        }
+
+        private static void TrabalhandoComListaManualmente()
+        {
+            List<ContaCorrente> contas = new List<ContaCorrente>
+            {
+                new ContaCorrente(123, 12345),
+                new ContaCorrente(123, 12346),
+                new ContaCorrente(123, 12347)
+            };
+
+            foreach (var item in contas)
+            {
+                Console.WriteLine(item);
+            }
+
+        }
+
+        private static void TrabalhandoComArry2()
+        {
+            ContaCorrente[] contas = new ContaCorrente[]
+                        {
+                new ContaCorrente(123, 12345),
+                new ContaCorrente(123, 12346),
+                new ContaCorrente(123, 12347)
+                        };
+
+            foreach (var item in contas)
+            {
+                Console.WriteLine(item);
+            }
+        }
+
+        private static void TrabalhandoComArray()
+        {
+            int[] idades = new int[5];
+
+            idades[0] = 10;
+            idades[1] = 90;
+            idades[2] = 45;
+            idades[3] = 32;
+            idades[4] = 18;
+
+            foreach (var item in idades)
+            {
+                Console.WriteLine("Idade: " + item);
+
+            }
+
+            Separador();
+
+            for (int i = 0; i < idades.Length; i++)
+            {
+                Console.WriteLine("Idade: " + idades[i]);
+            }
         }
 
         private static void TesteRegex()
@@ -65,41 +126,41 @@ namespace ByteBank.SistemaAgencia
             Console.WriteLine("--------------------------------------");
         }
 
-        //private static void GetDatas()
-        //{
-        //    DateTime dataFimPagamento = new DateTime(2019, 1, 04);
-        //    DateTime dataAtual = DateTime.Now;
-        //    //TimeSpan diff = dataFimPagamento - dataAtual;
-        //    TimeSpan diff = TimeSpan.FromMinutes(60 * 24);
-        //
-        //    Console.WriteLine("Data fim pagamento: " + dataFimPagamento);
-        //    Console.WriteLine("Data atual: " + dataAtual);
-        //    Console.WriteLine("Diferença de datas: " + TimeSpanHumanizeExtensions.Humanize(diff));
-        //
-        //    Console.ReadLine();
-        //}
+        private static void GetDatas()
+        {
+            DateTime dataFimPagamento = new DateTime(2019, 1, 04);
+            DateTime dataAtual = DateTime.Now;
+            //TimeSpan diff = dataFimPagamento - dataAtual;
+            TimeSpan diff = TimeSpan.FromMinutes(60 * 24);
 
-        //public static string GetIntervaloDeTempoLegivel(TimeSpan timeSpan)
-        //{
-        //    if (timeSpan.Days > 30 )
-        //    {
-        //        int quantidadeMeses = timeSpan.Days / 30;
-        //        if (quantidadeMeses == 1 )
-        //        {
-        //            return quantidadeMeses + " mês";
-        //        }
-        //        return quantidadeMeses + " meses";
-        //    }
-        //    else if (timeSpan.Days > 7)
-        //    {
-        //        int quantidadeSemanas = timeSpan.Days / 7;
-        //        if (quantidadeSemanas == 1)
-        //        {
-        //            return quantidadeSemanas + " semana";
-        //        }
-        //        return quantidadeSemanas + " semanas";
-        //    }
-        //    return timeSpan.Days + " Dias";
-        //}
+            Console.WriteLine("Data fim pagamento: " + dataFimPagamento);
+            Console.WriteLine("Data atual: " + dataAtual);
+            Console.WriteLine("Diferença de datas: " + TimeSpanHumanizeExtensions.Humanize(diff));
+
+            Console.ReadLine();
+        }
+
+        private static string GetIntervaloDeTempoLegivel(TimeSpan timeSpan)
+        {
+            if (timeSpan.Days > 30)
+            {
+                int quantidadeMeses = timeSpan.Days / 30;
+                if (quantidadeMeses == 1)
+                {
+                    return quantidadeMeses + " mês";
+                }
+                return quantidadeMeses + " meses";
+            }
+            else if (timeSpan.Days > 7)
+            {
+                int quantidadeSemanas = timeSpan.Days / 7;
+                if (quantidadeSemanas == 1)
+                {
+                    return quantidadeSemanas + " semana";
+                }
+                return quantidadeSemanas + " semanas";
+            }
+            return timeSpan.Days + " Dias";
+        }
     }
 }

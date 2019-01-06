@@ -10,7 +10,7 @@ namespace ByteBank.Modelos
     /// <summary>
     /// Define uma conta conrrente do banco ByteBank.
     /// </summary>
-    public class ContaCorrente
+    public class ContaCorrente : IEquatable<ContaCorrente>
     {
         public static int TotalDeContasCriadas { get; private set; }
         public static double TaxaOperacao { get; private set; }
@@ -119,6 +119,26 @@ namespace ByteBank.Modelos
         public override string ToString()
         {
             return $"Número: {Numero}, Agência: {Agencia}, Saldo: {Saldo} ";
+        }
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as ContaCorrente);
+        }
+
+        public bool Equals(ContaCorrente other)
+        {
+            return other != null &&
+                   Numero == other.Numero &&
+                   Agencia == other.Agencia;
+        }
+
+        public override int GetHashCode()
+        {
+            var hashCode = -1904310306;
+            hashCode = hashCode * -1521134295 + Numero.GetHashCode();
+            hashCode = hashCode * -1521134295 + Agencia.GetHashCode();
+            return hashCode;
         }
     }
 
