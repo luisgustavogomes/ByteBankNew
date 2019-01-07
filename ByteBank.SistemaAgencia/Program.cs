@@ -16,6 +16,57 @@ namespace ByteBank.SistemaAgencia
     {
         public static void Main(string[] args)
         {
+
+            Console.ReadLine();
+        }
+
+        private static void TrabalhandoComWhere()
+        {
+            var contas = new List<ContaCorrente>()
+            {
+                new ContaCorrente(123,1234),
+                new ContaCorrente(123,1235),
+                new ContaCorrente(122,1234),
+                new ContaCorrente(122,1235),
+                new ContaCorrente(321,5432),
+                null
+            };
+
+            var listaOrdenada = contas
+                .Where(c => c != null)
+                .OrderBy(c => c.Agencia)
+                .ToList();
+
+            listaOrdenada.ForEach(c => Console.WriteLine(c));
+        }
+
+        private static void TrabalhandoComOrderBy()
+        {
+            var contas = new List<ContaCorrente>()
+            {
+                new ContaCorrente(123,1234),
+                new ContaCorrente(124,1235),
+                new ContaCorrente(321,5432), null
+            };
+
+            var listaOrdenada = contas.OrderByDescending(c =>
+            {
+                if (c == null)
+                {
+                    return int.MaxValue;
+                }
+                return c.Numero;
+            }).ToList();
+
+            var listaOrdenada2 = contas.OrderBy(c => c == null ? int.MaxValue : c.Numero).ToList();
+
+            listaOrdenada.ForEach(c => Console.WriteLine(c));
+            Separador();
+            listaOrdenada2.ForEach(c => Console.WriteLine(c));
+        }
+
+        private static void TrabalhandoComSortEmClassesCriadas()
+        {
             var contas = new List<ContaCorrente>()
             {
                 new ContaCorrente(123,1234),
@@ -23,12 +74,13 @@ namespace ByteBank.SistemaAgencia
                 new ContaCorrente(321,5432)
             };
 
-            //contas.Sort(); --> Chamar a implementação IComparable
-            contas.Sort(new ComparadorContaCorrentePorAgencia());
+            //contas.Sort(); --> Chama a implementação IComparable
+
+            //contas.Sort(new ComparadorContaCorrentePorAgencia()); --> chama a implementação de IComparer
+
+            contas.Sort();
 
             contas.ForEach(c => Console.WriteLine(c));
-
-            Console.ReadLine();
         }
 
         private static void TestaSortInteiros()
