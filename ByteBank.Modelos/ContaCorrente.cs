@@ -10,7 +10,7 @@ namespace ByteBank.Modelos
     /// <summary>
     /// Define uma conta conrrente do banco ByteBank.
     /// </summary>
-    public class ContaCorrente : IEquatable<ContaCorrente>
+    public class ContaCorrente : IEquatable<ContaCorrente>, IComparable
     {
         public static int TotalDeContasCriadas { get; private set; }
         public static double TaxaOperacao { get; private set; }
@@ -139,6 +139,26 @@ namespace ByteBank.Modelos
             hashCode = hashCode * -1521134295 + Numero.GetHashCode();
             hashCode = hashCode * -1521134295 + Agencia.GetHashCode();
             return hashCode;
+        }
+
+        public int CompareTo(object obj)
+        {
+            // Retornar negativo quando a instância precede o obj
+            // Retornar zero quando nossa instância e obj forem equivalentes;
+            // Retornar positivo diferente de zero quando a precedência for de obj;
+            var outraConta = obj as ContaCorrente;
+            if (Numero < outraConta.Numero || outraConta == null)
+            {
+                return -1;
+            }
+            else if (Numero == outraConta.Numero)
+            {
+                return 0;
+            }
+            else
+            {
+                return 1;
+            }
         }
     }
 

@@ -6,14 +6,15 @@ using System.Threading.Tasks;
 
 namespace ByteBank.SistemaAgencia.Extencoes
 {
-    public static class ListExtencoes<T> 
+    public static class ListExtencoes
     {
-        public static void AddValues(this List<T> lista, params T[] itens)
+        public static void AddValues<T>(this List<T> lista, params T[] itens)
         {
             foreach (var item in itens)
             {
                 lista.Add(item);
             }
+
         }
 
     }

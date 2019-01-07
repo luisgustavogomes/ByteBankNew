@@ -6,6 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
+using ByteBank.SistemaAgencia.Extencoes;
+using Humanizer;
+using ByteBank.SistemaAgencia.Comparadores;
 
 namespace ByteBank.SistemaAgencia
 {
@@ -13,12 +16,45 @@ namespace ByteBank.SistemaAgencia
     {
         public static void Main(string[] args)
         {
-            List<ContaCorrente> contas = new List<ContaCorrente>();
+            var contas = new List<ContaCorrente>()
+            {
+                new ContaCorrente(123,1234),
+                new ContaCorrente(124,1235),
+                new ContaCorrente(321,5432)
+            };
 
+            //contas.Sort(); --> Chamar a implementação IComparable
+            contas.Sort(new ComparadorContaCorrentePorAgencia());
 
-
+            contas.ForEach(c => Console.WriteLine(c));
 
             Console.ReadLine();
+        }
+
+        private static void TestaSortInteiros()
+        {
+            var listaInteiros = new List<int>();
+            listaInteiros.AddValues(1, 3, 5, 7, 9, 11, 13, 15, 14, 12, 10, 8, 6, 4, 2);
+            listaInteiros.ForEach(l => Console.WriteLine(l));
+
+            Separador();
+
+            listaInteiros.Sort();
+            listaInteiros.ForEach(l => Console.WriteLine(l));
+        }
+
+        private static void TrabalhandoComMetodosExtencoes()
+        {
+            List<ContaCorrente> contas = new List<ContaCorrente>();
+            ContaCorrente c1 = new ContaCorrente(agencia: 123, numero: 12345);
+            ContaCorrente c2 = new ContaCorrente(agencia: 123, numero: 12346);
+            contas.AddValues(c1, c2);
+
+            foreach (var item in contas)
+            {
+                Console.WriteLine(item);
+            }
+
         }
 
         private static void TrabalhandoComNullEmValores()
